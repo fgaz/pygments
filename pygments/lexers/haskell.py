@@ -330,7 +330,7 @@ class AgdaLexer(RegexLexer):
             (r'\b(Set|Prop)[\u2080-\u2089]*\b', Keyword.Type),
             #  Special Symbols
             (r'(\(|\)|\{|\})', Operator),
-            (r'(\.{1,3}|\||\u03BB|\u2200|\u2192|:|=|->)', Operator.Word),
+            (r'(\.{1,3}|\||\\|\u03BB|\u2200|\u2192|:|=|->|\.\.|\.\.\.)', Operator.Word),
             #  Numbers
             (r'\d+[eE][+-]?\d+', Number.Float),
             (r'\d+\.\d+([eE][+-]?\d+)?', Number.Float),
@@ -344,6 +344,7 @@ class AgdaLexer(RegexLexer):
         ],
         'hole': [
             # Holes
+            (r'\?', Comment.Directive),
             (r'[^!{}]+', Comment.Directive),
             (r'\{!', Comment.Directive, '#push'),
             (r'!\}', Comment.Directive, '#pop'),
